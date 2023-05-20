@@ -649,6 +649,8 @@ void WiFiManager::setupHTTPServer(){
   server->on(WM_G(R_paramsave),  std::bind(&WiFiManager::handleParamSave, this));
   server->on(WM_G(R_restart),    std::bind(&WiFiManager::handleReset, this));
   server->on(WM_G(R_exit),       std::bind(&WiFiManager::handleExit, this));
+  server->on(WM_G(R_management), std::bind(&WiFiManager::handleManagement, this));
+  server->on(WM_G(R_report),     std::bind(&WiFiManager::handleReport, this));
   server->on(WM_G(R_close),      std::bind(&WiFiManager::handleClose, this));
   server->on(WM_G(R_erase),      std::bind(&WiFiManager::handleErase, this, false));
   server->on(WM_G(R_status),     std::bind(&WiFiManager::handleWiFiStatus, this));
@@ -2266,7 +2268,7 @@ String WiFiManager::getInfoData(String id){
     // temperature is not calibrated, varying large offsets are present, use for relative temp changes only
     p = FPSTR(HTTP_INFO_temp);
     p.replace(FPSTR(T_1),(String)temperatureRead());
-    p.replace(FPSTR(T_2),(String)((temperatureRead()+32)*1.8f));
+    p.replace(FPSTR(T_2),(String)((temperatureRead()+32)*1.8));
   }
   // else if(id==F("hall")){ 
   //   p = FPSTR(HTTP_INFO_hall);
@@ -2303,6 +2305,41 @@ String WiFiManager::getInfoData(String id){
     p.replace(FPSTR(T_1),String(__DATE__ " " __TIME__));
   }
   return p;
+}
+
+
+/** 
+ * HTTPD CALLBACK exit, closes configportal if blocking, if non blocking undefined
+ */
+void WiFiManager::handleReport() {
+  #ifdef WM_DEBUG_LEVEL
+  DEBUG_WM(DEBUG_VERBOSE,F("<- HTTP report"));
+  #endif
+  handleRequest();
+  String page = getHTTPHead(FPSTR(S_titlereport)); // @token titleinfo
+  reportStatus(page);
+  page += "<h3>اخرین تردد های ثبت شده</h3><br><hr>";
+  page += FPSTR(HTTP_TRANSACTION);
+  page += FPSTR(HTTP_END);
+  HTTPSend(page);
+
+}
+
+
+/** 
+ * HTTPD CALLBACK exit, closes configportal if blocking, if non blocking undefined
+ */
+void WiFiManager::handleManagement() {
+  #ifdef WM_DEBUG_LEVEL
+  DEBUG_WM(DEBUG_VERBOSE,F("<- HTTP mangment"));
+  #endif
+  handleRequest();
+  String page = getHTTPHead(FPSTR(S_titleinfo)); // @token titleinfo
+  reportStatus(page);
+  page += FPSTR(HTTP_HELP);
+  page += FPSTR(HTTP_END);
+  HTTPSend(page);
+
 }
 
 /** 
@@ -3125,7 +3162,7 @@ void WiFiManager::setMenu(const char * menu[], uint8_t size){
   _menuIds.clear();
   for(size_t i = 0; i < size; i++){
     for(size_t j = 0; j < _nummenutokens; j++){
-      if((String)menu[i] == String(_menutokens[j])){
+      if(menu[i] == _menutokens[j]){
         if((String)menu[i] == "param") _paramsInWifi = false; // param auto flag
         _menuIds.push_back(j);
       }
@@ -3152,7 +3189,7 @@ void WiFiManager::setMenu(std::vector<const char *>& menu){
   _menuIds.clear();
   for(auto menuitem : menu ){
     for(size_t j = 0; j < _nummenutokens; j++){
-      if((String)menuitem == String(_menutokens[j])){
+      if(menuitem == _menutokens[j]){
         if((String)menuitem == "param") _paramsInWifi = false; // param auto flag
         _menuIds.push_back(j);
       }

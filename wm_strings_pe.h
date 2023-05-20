@@ -6,6 +6,7 @@
  *
  * @author Creator tzapu
  * @author tablatronix
+ * @author Mohammad Khazaei
  * @version 0.0.0
  * @license MIT
  */
@@ -20,10 +21,10 @@
 // strings files must include a consts file!
 #include "wm_consts_en.h" // include constants, tokens, routes
 
-const char WM_LANGUAGE[] PROGMEM = "en-US"; // i18n lang code
+const char WM_LANGUAGE[] PROGMEM = "pe-US"; // i18n lang code
 
 const char HTTP_HEAD_START[]       PROGMEM = "<!DOCTYPE html>"
-"<html lang='en'><head>"
+"<html lang='pe'><head>"
 "<meta name='format-detection' content='telephone=no'>"
 "<meta charset='UTF-8'>"
 "<meta  name='viewport' content='width=device-width,initial-scale=1,user-scalable=no'/>"
@@ -40,19 +41,22 @@ const char HTTP_SCRIPT[]           PROGMEM = "<script>function c(l){"
 const char HTTP_HEAD_END[]         PROGMEM = "</head><body class='{c}'><div class='wrap'>"; // {c} = _bodyclass
 // example of embedded logo, base64 encoded inline, No styling here
 // const char HTTP_ROOT_MAIN[]        PROGMEM = "<img title=' alt=' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADQElEQVRoQ+2YjW0VQQyE7Q6gAkgFkAogFUAqgFQAVACpAKiAUAFQAaECQgWECggVGH1PPrRvn3dv9/YkFOksoUhhfzwz9ngvKrc89JbnLxuA/63gpsCmwCADWwkNEji8fVNgotDM7osI/x777x5l9F6JyB8R4eeVql4P0y8yNsjM7KGIPBORp558T04A+CwiH1UVUItiUQmZ2XMReSEiAFgjAPBeVS96D+sCYGaUx4cFbLfmhSpnqnrZuqEJgJnd8cQplVLciAgX//Cf0ToIeOB9wpmloLQAwpnVmAXgdf6pwjpJIz+XNoeZQQZlODV9vhc1Tuf6owrAk/8qIhFbJH7eI3eEzsvydQEICqBEkZwiALfF70HyHPpqScPV5HFjeFu476SkRA0AzOfy4hYwstj2ZkDgaphE7m6XqnoS7Q0BOPs/sw0kDROzjdXcCMFCNwzIy0EcRcOvBACfh4k0wgOmBX4xjfmk4DKTS31hgNWIKBCI8gdzogTgjYjQWFMw+o9LzJoZ63GUmjWm2wGDc7EvDDOj/1IVMIyD9SUAL0WEhpriRlXv5je5S+U1i2N88zdPuoVkeB+ls4SyxCoP3kVm9jsjpEsBLoOBNC5U9SwpGdakFkviuFP1keblATkTENTYcxkzgxTKOI3jyDxqLkQT87pMA++H3XvJBYtsNbBN6vuXq5S737WqHkW1VgMQNXJ0RshMqbbT33sJ5kpHWymzcJjNTeJIymJZtSQd9NHQHS1vodoFoTMkfbJzpRnLzB2vi6BZAJxWaCr+62BC+jzAxVJb3dmmiLzLwZhZNPE5e880Suo2AZgB8e8idxherqUPnT3brBDTlPxO3Z66rVwIwySXugdNd+5ejhqp/+NmgIwGX3Py3QBmlEi54KlwmjkOytQ+iJrLJj23S4GkOeecg8G091no737qvRRdzE+HLALQoMTBbJgBsCj5RSWUlUVJiZ4SOljb05eLFWgoJ5oY6yTyJp62D39jDANoKKcSocPJD5dQYzlFAFZJflUArgTPZKZwLXAnHmerfJquUkKZEgyzqOb5TuDt1P3nwxobqwPocZA11m4A1mBx5IxNgRH21ti7KbAGiyNn3HoF/gJ0w05A8xclpwAAAABJRU5ErkJggg==' /><h1>{v}</h1><h3>WiFiManager</h3>";
-const char HTTP_ROOT_MAIN[]        PROGMEM = "<h1>{t}</h1><h3>{v}</h3>";
+const char HTTP_ROOT_MAIN[]        PROGMEM = "<center><h1>{t}</h1><h4>{v} : متصل شده به ششبکه <svg width='12' height='12' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='3' cy='3' r='3' fill='#06DE42' fill-opacity='0.3'/><circle cx='2.99997' cy='3.00003' r='2.14286' fill='#06DE42'/></svg></h4><center>";
 
 const char * const HTTP_PORTAL_MENU[] PROGMEM = {
-"<form action='/wifi'    method='get'><button>Configure WiFi</button></form><br/>\n", // MENU_WIFI
-"<form action='/0wifi'   method='get'><button>Configure WiFi (No scan)</button></form><br/>\n", // MENU_WIFINOSCAN
-"<form action='/info'    method='get'><button>Info</button></form><br/>\n", // MENU_INFO
-"<form action='/param'   method='get'><button>Setup</button></form><br/>\n",//MENU_PARAM
-"<form action='/close'   method='get'><button>Close</button></form><br/>\n", // MENU_CLOSE
-"<form action='/restart' method='get'><button>Restart</button></form><br/>\n",// MENU_RESTART
-"<form action='/exit'    method='get'><button>Exit</button></form><br/>\n",  // MENU_EXIT
-"<form action='/erase'   method='get'><button class='D'>Erase</button></form><br/>\n", // MENU_ERASE
-"<form action='/update'  method='get'><button>Update</button></form><br/>\n",// MENU_UPDATE
-"<hr><br/>" // MENU_SEP
+"<form action='/wifi'    method='get'><button>تنظیمات وای فای</button></form>\n", // MENU_WIFI
+"<form action='/0wifi'   method='get'><button>تنظیمات وای فای< (بدون اسکن)</button></form>\n", // MENU_WIFINOSCAN
+"<form action='/info'    method='get'><button>مشخصات دستگاه</button></form>\n", // MENU_INFO
+"<form action='/param'   method='get'><button>نصب</button></form>\n",//MENU_PARAM
+"<form action='/close'   method='get'><button>خروج</button></form>\n", // MENU_CLOSE
+"<form action='/restart' method='get'><button>راه اندازی مجدد</button></form>\n",// MENU_RESTART
+"<form action='/exit'    method='get'><button>خروج</button></form>\n",  // MENU_EXIT
+"<form action='/erase'   method='get'><button class='D'>پاک کردن</button></form>n", // MENU_ERASE
+"<form action='/management'  method='get'><button>مدیریت دستگاه</button></form>\n",// MENU_UPDATE
+"<form action='/report'  method='get'><button>گزارش گیری</button></form>\n",// MENU_UPDATE
+"<form action='/update'  method='get'><button>بروزرسانی</button></form>\n",// MENU_UPDATE
+"<hr><br/>", // MENU_SEP
+
 };
 
 // const char HTTP_PORTAL_OPTIONS[]   PROGMEM = strcat(HTTP_PORTAL_MENU[0] , HTTP_PORTAL_MENU[3] , HTTP_PORTAL_MENU[7]);
@@ -66,31 +70,31 @@ const char HTTP_FORM_START[]       PROGMEM = "<form method='POST' action='{v}'>"
 const char HTTP_FORM_WIFI[]        PROGMEM = "<label for='s'>SSID</label><input id='s' name='s' maxlength='32' autocorrect='off' autocapitalize='none' placeholder='{v}'><br/><label for='p'>Password</label><input id='p' name='p' maxlength='64' type='password' placeholder='{p}'><input type='checkbox' onclick='f()'> Show Password";
 const char HTTP_FORM_WIFI_END[]    PROGMEM = "";
 const char HTTP_FORM_STATIC_HEAD[] PROGMEM = "<hr><br/>";
-const char HTTP_FORM_END[]         PROGMEM = "<br/><br/><button type='submit'>Save</button></form>";
+const char HTTP_FORM_END[]         PROGMEM = "<br/><br/><button type='submit'>ذخیره</button></form>";
 const char HTTP_FORM_LABEL[]       PROGMEM = "<label for='{i}'>{t}</label>";
 const char HTTP_FORM_PARAM_HEAD[]  PROGMEM = "<hr><br/>";
 const char HTTP_FORM_PARAM[]       PROGMEM = "<br/><input id='{i}' name='{n}' maxlength='{l}' value='{v}' {c}>\n"; // do not remove newline!
 
 const char HTTP_SCAN_LINK[]        PROGMEM = "<br/><form action='/wifi?refresh=1' method='POST'><button name='refresh' value='1'>Refresh</button></form>";
-const char HTTP_SAVED[]            PROGMEM = "<div class='msg'>Saving Credentials<br/>Trying to connect ESP to network.<br />If it fails reconnect to AP to try again</div>";
-const char HTTP_PARAMSAVED[]       PROGMEM = "<div class='msg S'>Saved<br/></div>";
+const char HTTP_SAVED[]            PROGMEM = "<div class='msg'> تنظیمات ذخیره شد<br/>درحال تلاش برای اتصال به شبکه<br />در صورت عدم اتصال به شبکه پیشفرض متصل خواهید شد</div>";
+const char HTTP_PARAMSAVED[]       PROGMEM = "<div class='msg S'>ذخیره شد<br/></div>";
 const char HTTP_END[]              PROGMEM = "</div></body></html>";
 const char HTTP_ERASEBTN[]         PROGMEM = "<br/><form action='/erase' method='get'><button class='D'>Erase WiFi config</button></form>";
 const char HTTP_UPDATEBTN[]        PROGMEM = "<br/><form action='/update' method='get'><button>Update</button></form>";
 const char HTTP_BACKBTN[]          PROGMEM = "<hr><br/><form action='/' method='get'><button>Back</button></form>";
 
-const char HTTP_STATUS_ON[]        PROGMEM = "<div class='msg S'><strong>Connected</strong> to {v}<br/><em><small>with IP {i}</small></em></div>";
-const char HTTP_STATUS_OFF[]       PROGMEM = "<div class='msg {c}'><strong>Not connected</strong> to {v}{r}</div>"; // {c=class} {v=ssid} {r=status_off}
-const char HTTP_STATUS_OFFPW[]     PROGMEM = "<br/>Authentication failure"; // STATION_WRONG_PASSWORD,  no eps32
+const char HTTP_STATUS_ON[]        PROGMEM = "<div class='msg S'><strong>اتصال برقرارشد</strong> to {v}<br/><em><small>with IP {i}</small></em></div>";
+const char HTTP_STATUS_OFF[]       PROGMEM = "<div class='msg {c}'><strong>اتصال برقرارنشد</strong><br>  خطا در برقراری اتصال با شبکه : {v}</div>"; // {c=class} {v=ssid} {r=status_off}
+const char HTTP_STATUS_OFFPW[]     PROGMEM = "<br/>اعتبار سنجی ناموفق بود"; // STATION_WRONG_PASSWORD,  no eps32
 const char HTTP_STATUS_OFFNOAP[]   PROGMEM = "<br/>AP not found";   // WL_NO_SSID_AVAIL
 const char HTTP_STATUS_OFFFAIL[]   PROGMEM = "<br/>Could not connect"; // WL_CONNECT_FAILED
 const char HTTP_STATUS_NONE[]      PROGMEM = "<div class='msg'>No AP set</div>";
 const char HTTP_BR[]               PROGMEM = "<br/>";
 
 const char HTTP_STYLE[]            PROGMEM = "<style>"
-".c,body{text-align:center;font-family:verdana}div,input,select{padding:5px;font-size:1em;margin:5px 0;box-sizing:border-box}"
-"input,button,select,.msg{border-radius:.3rem;width: 100%}input[type=radio],input[type=checkbox]{width:auto}"
-"button,input[type='button'],input[type='submit']{cursor:pointer;border:0;background-color:#1fa3ec;color:#fff;line-height:2.4rem;font-size:1.2rem;width:100%}"
+".c,body{text-align:center;font-family:iransans}div,input,select{padding:5px;font-size:1em;margin:5px 0;box-sizing:border-box}"
+"input,button,select,.msg{direction: rtl;    float: right;text-align: right;border-radius:8px;width: 100%}input[type=radio],input[type=checkbox]{width:auto}"
+"button,input[type='button'],input[type='submit']{cursor:pointer;border:0;background-color:#1fa3ec;color:#fff;line-height:45px;font-size:1.2rem;width:100%;padding-bottom:5px;padding-top:5px;padding-right: 12px;margin-top:5px;margin-bottom: 5px;font-family: iransans;}"
 "input[type='file']{border:1px solid #1fa3ec}"
 ".wrap {text-align:left;display:inline-block;min-width:260px;max-width:500px}"
 // links
@@ -103,7 +107,7 @@ const char HTTP_STYLE[]            PROGMEM = "<style>"
 "background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALwAAAAgCAMAAACfM+KhAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAESIzRGZ3iJmqu8zd7gKjCLQAAACmSURBVHgB7dDBCoMwEEXRmKlVY3L//3NLhyzqIqSUggy8uxnhCR5Mo8xLt+14aZ7wwgsvvPA/ofv9+44334UXXngvb6XsFhO/VoC2RsSv9J7x8BnYLW+AjT56ud/uePMdb7IP8Bsc/e7h8Cfk912ghsNXWPpDC4hvN+D1560A1QPORyh84VKLjjdvfPFm++i9EWq0348XXnjhhT+4dIbCW+WjZim9AKk4UZMnnCEuAAAAAElFTkSuQmCC');"
 "background-size: 95px 16px;}}"
 // msg callouts
-".msg{padding:20px;margin:20px 0;border:1px solid #eee;border-left-width:5px;border-left-color:#777}.msg h4{margin-top:0;margin-bottom:5px}.msg.P{border-left-color:#1fa3ec}.msg.P h4{color:#1fa3ec}.msg.D{border-left-color:#dc3630}.msg.D h4{color:#dc3630}.msg.S{border-left-color: #5cb85c}.msg.S h4{color: #5cb85c}"
+".msg{padding:20px;margin:20px 0;border:1px solid #eee;border-right-width:5px;border-right-color:#777}.msg h4{margin-top:0;margin-bottom:5px}.msg.P{border-right-color:#1fa3ec}.msg.P h4{color:#1fa3ec}.msg.D{border-right-color:#dc3630}.msg.D h4{color:#dc3630}.msg.S{border-right-color: #5cb85c}.msg.S h4{color: #5cb85c}"
 // lists
 "dt{font-weight:bold}dd{margin:0;padding:0 0 0.5em 0;min-height:12px}"
 "td{vertical-align: top;}"
@@ -116,7 +120,26 @@ const char HTTP_STYLE[]            PROGMEM = "<style>"
 "body.invert .msg{color:#fff;background-color:#282828;border-top:1px solid #555;border-right:1px solid #555;border-bottom:1px solid #555;}"
 "body.invert .q[role=img]{-webkit-filter:invert(1);filter:invert(1);}"
 ":disabled {opacity: 0.5;}"
+"table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;direction : rtl;float : right;overflow-x:auto;}"
+"td, th {border: 1px solid #dddddd;text-align: center;padding: 8px; }"
+"tr:nth-child(even) {background-color: #dddddd;}"
 "</style>";
+
+
+const char HTTP_TRANSACTION[]             PROGMEM = 
+"<table style='float:right;'>"
+"<tr>"
+"<th>زمان</th>"
+"<th>نوع</th>"
+"<th>شناسه</th>"
+"</tr>"
+"<tr>"
+"<td>14:28</td>"
+"<td>incoming</td>"
+"<td>9823061117</td>"
+"</tr>"
+"</table>"
+;
 
 #ifndef WM_NOHELP
 const char HTTP_HELP[]             PROGMEM =
@@ -184,23 +207,23 @@ const char HTTP_JS[] PROGMEM =
 	const char HTTP_INFO_temp[]       PROGMEM = "<dt>Temperature</dt><dd>{1} C&deg; / {2} F&deg;</dd>";
     const char HTTP_INFO_hall[]       PROGMEM = "<dt>Hall</dt><dd>{1}</dd>";
 #else
-	const char HTTP_INFO_esphead[]    PROGMEM = "<h3>esp8266</h3><hr><dl>";
-	const char HTTP_INFO_fchipid[]    PROGMEM = "<dt>Flash chip ID</dt><dd>{1}</dd>";
-	const char HTTP_INFO_corever[]    PROGMEM = "<dt>Core version</dt><dd>{1}</dd>";
-	const char HTTP_INFO_bootver[]    PROGMEM = "<dt>Boot version</dt><dd>{1}</dd>";
-	const char HTTP_INFO_lastreset[]  PROGMEM = "<dt>Last reset reason</dt><dd>{1}</dd>";
-	const char HTTP_INFO_flashsize[]  PROGMEM = "<dt>Real flash size</dt><dd>{1} bytes</dd>";
+	const char HTTP_INFO_esphead[]    PROGMEM = "<h3>دستگاه کنترل مدل 8266</h3><hr><dl>";
+	const char HTTP_INFO_fchipid[]    PROGMEM = "<dt>شناسه چیت فلش</dt><dd>{1}</dd>";
+	const char HTTP_INFO_corever[]    PROGMEM = "<dt>ورژن هسته</dt><dd>{1}</dd>";
+	const char HTTP_INFO_bootver[]    PROGMEM = "<dt>ورژن بوت</dt><dd>{1}</dd>";
+	const char HTTP_INFO_lastreset[]  PROGMEM = "<dt>دلیل اخر بازنشانی</dt><dd>{1}</dd>";
+	const char HTTP_INFO_flashsize[]  PROGMEM = "<dt>اندازه واقعی حافظه فلش</dt><dd>{1} bytes</dd>";
 #endif
 
 const char HTTP_INFO_memsmeter[]  PROGMEM = "<br/><progress value='{1}' max='{2}'></progress></dd>";
-const char HTTP_INFO_memsketch[]  PROGMEM = "<dt>Memory - Sketch size</dt><dd>Used / Total bytes<br/>{1} / {2}";
-const char HTTP_INFO_freeheap[]   PROGMEM = "<dt>Memory - Free heap</dt><dd>{1} bytes available</dd>";
-const char HTTP_INFO_wifihead[]   PROGMEM = "<br/><h3>WiFi</h3><hr>";
-const char HTTP_INFO_uptime[]     PROGMEM = "<dt>Uptime</dt><dd>{1} mins {2} secs</dd>";
-const char HTTP_INFO_chipid[]     PROGMEM = "<dt>Chip ID</dt><dd>{1}</dd>";
-const char HTTP_INFO_idesize[]    PROGMEM = "<dt>Flash size</dt><dd>{1} bytes</dd>";
-const char HTTP_INFO_sdkver[]     PROGMEM = "<dt>SDK version</dt><dd>{1}</dd>";
-const char HTTP_INFO_cpufreq[]    PROGMEM = "<dt>CPU frequency</dt><dd>{1}MHz</dd>";
+const char HTTP_INFO_memsketch[]  PROGMEM = "<dt>حافظه - حجم برنامه</dt><dd>Used / Total bytes<br/>{1} / {2}";
+const char HTTP_INFO_freeheap[]   PROGMEM = "<dt>حافظه - پشته آزاد</dt><dd>{1} bytes available</dd>";
+const char HTTP_INFO_wifihead[]   PROGMEM = "<br/><h3>وای فای</h3><hr>";
+const char HTTP_INFO_uptime[]     PROGMEM = "<dt>اپتایم</dt><dd>{1} mins {2} secs</dd>";
+const char HTTP_INFO_chipid[]     PROGMEM = "<dt>شناسه یکتا پردازنده</dt><dd>{1}</dd>";
+const char HTTP_INFO_idesize[]    PROGMEM = "<dt>اندازه فلش</dt><dd>{1} bytes</dd>";
+const char HTTP_INFO_sdkver[]     PROGMEM = "<dt>ورژن SDK</dt><dd>{1}</dd>";
+const char HTTP_INFO_cpufreq[]    PROGMEM = "<dt>فرکانس پردازند</dt><dd>{1}MHz</dd>";
 const char HTTP_INFO_apip[]       PROGMEM = "<dt>Access point IP</dt><dd>{1}</dd>";
 const char HTTP_INFO_apmac[]      PROGMEM = "<dt>Access point MAC</dt><dd>{1}</dd>";
 const char HTTP_INFO_apssid[]     PROGMEM = "<dt>Access point SSID</dt><dd>{1}</dd>";
@@ -215,42 +238,44 @@ const char HTTP_INFO_stamac[]     PROGMEM = "<dt>Station MAC</dt><dd>{1}</dd>";
 const char HTTP_INFO_conx[]       PROGMEM = "<dt>Connected</dt><dd>{1}</dd>";
 const char HTTP_INFO_autoconx[]   PROGMEM = "<dt>Autoconnect</dt><dd>{1}</dd>";
 
-const char HTTP_INFO_aboutver[]     PROGMEM = "<dt>WiFiManager</dt><dd>{1}</dd>";
-const char HTTP_INFO_aboutarduino[] PROGMEM = "<dt>Arduino</dt><dd>{1}</dd>";
+const char HTTP_INFO_aboutver[]     PROGMEM = "<dt>دستگاه کنترل تردد</dt><dd>{1}</dd>";
+const char HTTP_INFO_aboutarduino[] PROGMEM = "<dt>آردوینو</dt><dd>{1}</dd>";
 const char HTTP_INFO_aboutsdk[]     PROGMEM = "<dt>ESP-SDK/IDF</dt><dd>{1}</dd>";
-const char HTTP_INFO_aboutdate[]    PROGMEM = "<dt>Build date</dt><dd>{1}</dd>";
+const char HTTP_INFO_aboutdate[]    PROGMEM = "<dt>تاریخ ایجاد</dt><dd>{1}</dd>";
 
-const char S_brand[]              PROGMEM = "WiFiManager";
+const char S_brand[]              PROGMEM = "دستگاه کنترل تردد";
 const char S_debugPrefix[]        PROGMEM = "*wm:";
-const char S_y[]                  PROGMEM = "Yes";
-const char S_n[]                  PROGMEM = "No";
-const char S_enable[]             PROGMEM = "Enabled";
-const char S_disable[]            PROGMEM = "Disabled";
+const char S_y[]                  PROGMEM = "بله";
+const char S_n[]                  PROGMEM = "خیر";
+const char S_enable[]             PROGMEM = "فعال شد";
+const char S_disable[]            PROGMEM = "غیرفغال شد";
 const char S_GET[]                PROGMEM = "GET";
 const char S_POST[]               PROGMEM = "POST";
 const char S_NA[]                 PROGMEM = "Unknown";
 const char S_passph[]             PROGMEM = "********";
-const char S_titlewifisaved[]     PROGMEM = "Credentials saved";
-const char S_titlewifisettings[]  PROGMEM = "Settings saved";
+const char S_titlewifisaved[]     PROGMEM = "اعتبارنامه ها ذخیره شد";
+const char S_titlewifisettings[]  PROGMEM = "تنظیمات ذخیره شد";
 const char S_titlewifi[]          PROGMEM = "Config ESP";
-const char S_titleinfo[]          PROGMEM = "Info";
-const char S_titleparam[]         PROGMEM = "Setup";
-const char S_titleparamsaved[]    PROGMEM = "Setup saved";
-const char S_titleexit[]          PROGMEM = "Exit";
-const char S_titlereset[]         PROGMEM = "Reset";
-const char S_titleerase[]         PROGMEM = "Erase";
-const char S_titleclose[]         PROGMEM = "Close";
-const char S_options[]            PROGMEM = "options";
-const char S_nonetworks[]         PROGMEM = "No networks found. Refresh to scan again.";
-const char S_staticip[]           PROGMEM = "Static IP";
+const char S_titleinfo[]          PROGMEM = "مشصخات دستگاه";
+const char S_titleparam[]         PROGMEM = "تنظیمات اولیه";
+const char S_titleparamsaved[]    PROGMEM = "تنظیمات ذخیره شد";
+const char S_titleexit[]          PROGMEM = "خروج";
+const char S_titleManagement[]    PROGMEM = "مدیریت دستگاه";
+const char S_titlereport[]        PROGMEM = "گزارش اجمالی";
+const char S_titlereset[]         PROGMEM = "راه اندازی مجدد";
+const char S_titleerase[]         PROGMEM = "پاک کردن";
+const char S_titleclose[]         PROGMEM = "خروج";
+const char S_options[]            PROGMEM = "گزینه ها";
+const char S_nonetworks[]         PROGMEM = "هیچ شبکه ای پیدا نشد برای اسکن مجدد، بازخوانی کنید.";
+const char S_staticip[]           PROGMEM = "ایپی ثابت";
 const char S_staticgw[]           PROGMEM = "Static gateway";
 const char S_staticdns[]          PROGMEM = "Static DNS";
 const char S_subnet[]             PROGMEM = "Subnet";
 const char S_exiting[]            PROGMEM = "Exiting";
-const char S_resetting[]          PROGMEM = "Module will reset in a few seconds.";
-const char S_closing[]            PROGMEM = "You can close the page, portal will continue to run";
-const char S_error[]              PROGMEM = "An error occured";
-const char S_notfound[]           PROGMEM = "File not found\n\n";
+const char S_resetting[]          PROGMEM = "ماژول در چند ثانیه تنظیم مجدد می شود";
+const char S_closing[]            PROGMEM = "شما می توانید صفحه را ببندید، پورتال به کار خود ادامه می دهد";
+const char S_error[]              PROGMEM = "خطایی رخ داد";
+const char S_notfound[]           PROGMEM = "فایل پیدا نشد\n\n";
 const char S_uri[]                PROGMEM = "URI: ";
 const char S_method[]             PROGMEM = "\nMethod: ";
 const char S_args[]               PROGMEM = "\nArguments: ";

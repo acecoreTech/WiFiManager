@@ -136,7 +136,7 @@
 // Include wm strings vars
 // Pass in strings env override via WM_STRINGS_FILE
 #ifndef WM_STRINGS_FILE
-#define WM_STRINGS_FILE "wm_strings_en.h" // this includes constants as dependency
+#define WM_STRINGS_FILE "wm_strings_pe.h" // this includes constants as dependency
 #endif
 #include WM_STRINGS_FILE
 
@@ -487,6 +487,7 @@ class WiFiManager
     // get hostname helper
     String        getWiFiHostname();
 
+    void          setStylePage();
 
     std::unique_ptr<DNSServer>        dnsServer;
 
@@ -503,7 +504,7 @@ class WiFiManager
     std::vector<uint8_t> _menuIds;
     std::vector<const char *> _menuIdsParams  = {"wifi","param","info","exit"};
     std::vector<const char *> _menuIdsUpdate  = {"wifi","param","info","update","exit"};
-    std::vector<const char *> _menuIdsDefault = {"wifi","info","exit","sep","update"};
+    std::vector<const char *> _menuIdsDefault = {"management","report","wifi","info"};
 
     // ip configs @todo struct ?
     IPAddress     _ap_static_ip;
@@ -654,6 +655,8 @@ class WiFiManager
     void          handleReset();
     void          handleNotFound();
     void          handleExit();
+    void          handleManagement();
+    void          handleReport();
     void          handleClose();
     // void          handleErase();
     void          handleErase(boolean opt);
